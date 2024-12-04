@@ -5,24 +5,24 @@
 }
 */
 
-.container {
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    width: 90%;
-    margin-inline: auto;
-    gap: 20px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.slider {
-    flex-grow: 1;
+.container {
+    height: 100dvh;
+    position: relative;
+}
+
+#slider {
     height: 100%;
-    width: 100px;
 }
 
 .btn {
+    position: absolute;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -31,6 +31,20 @@
     align-items: center;
     border: 1px solid lightgray;
     transition: all 0.2s ease-in-out;
+    color: white;
+    z-index: 10;
+}
+
+.prev {
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .btn:hover {
@@ -44,9 +58,47 @@
     object-fit: contain;
 }
 
-.slider img {
+#slider img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     transition: all 0.2s ease-in-out;
+    position: absolute;
+}
+
+.sliderImg {
+    transition: opacity 2s ease-in-out;
+    opacity: 1;
+}
+
+.sliderImg.hidden {
+    opacity: 0;
+}
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.dots .dot.active {
+    background-color: gray;
+}
+
+@media screen and (max-width: 425px) {
+    .btn {
+        display: none;
+    }
 }
